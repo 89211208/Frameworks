@@ -19,21 +19,21 @@ As the intention of these set of tutorials is to replicate the funcionality of y
 
  [Official instructions](https://nodejs.org/en/)
 
-## Creating a simple server with NodeJS
+## Creating a simple [server](https://en.wikipedia.org/wiki/Server_(computing)) with NodeJS
 
-1. Create a folder named Servers (Any place in your computer, just remember where)
+1. Create a folder named Server (wherever you want, just remember where...)
 
-2. Inside the folder create an empty document (name does not matter) SimpleServer.js (the extension is important)
+2. Inside the Server folder create an empty document and name it SimpleServer.js (name of file does not matter but the extension does)
 
-3. Open SimpleServer.js with your favorite IDE
+3. Open SimpleServer.js with your favorite IDE (I recommend to use Visual Studio Code)
 
 4. In the first line of the document simply write
 
 ```javascript
-var http =require('http');
+var http =require('http'); // read buil-in module
 ```
 
-5. Create an object from the module we are calling in the first line
+5. Create an object from the module we are importing in the first line
 
 ```javascript
 http.createServer((req,res)=>{
@@ -42,7 +42,7 @@ res.end()
 }).listen(8000)
 ```
 
-6. So far nothing has happend since we haven't told Node.js to start the server. In order to do it: i) open the terminal/console app from your Operative System and ii) run the comand:
+6. So far nothing has happend since we haven't told Node.js to start the server. In order to do it: i) open the terminal/console app and ii) run the comand:
 
 ```console
 node path/to/your/SimpleServer.js
@@ -52,7 +52,7 @@ node path/to/your/SimpleServer.js
 
 7. In order to see what is going on, open your favorite browser and type in the url bar: <http://localhost:8000/>. Be sure that the ending point of the url is :8000, since that is the port we have asasigned to listen and echo requests.
 
-8. The client is in this case running in/is a browser [Chrome,  Safari, Firefor,  etc.] so it can understand HTML. To prove this concept, let's modify the line
+8. The **client** is, in this case running in a browser (Chrome,  Safari, Firefor,  etc.). As the client is a browser, it can "understand" HTML and JavaScript. So let's see what we can do.
 
 ```javascript
 res.write("This line has been instantiated from the server...")
@@ -64,7 +64,7 @@ res.write("This line has been instantiated from the server...")
 res.write("<h1>This line has been instantiated from the server...</h1>")
 ```
 
-- For some of you maybe the prebious didn't work. This is becuase your browser needs an speceific instruction
+- For some of you, maybe the previous example didn't work. This is becuase your browser needs an specific "instruction". 
 
 ``` javascript
 res.writeHead(200,{"Content-Type": "text/html"})
@@ -73,7 +73,7 @@ res.write("<h1>This line has been instantiated from the server...</h1>")
 
 **IMPORTANT, SKIP STEPS 9-11 IF YOU ARE DOING THIS IN FAMNIT SERVER**
 
-9. Now as you can see, every time we make a modification in the server we have to stop node and run it again as in the step 6. Here is when the magic of Node start to happen. As  you might recall, Node.js allows you to install third party(modules, API, functions and more) thourgh package manager. In this case, we will install [nodemon](https://www.npmjs.com/package/nodemon) , a tool that automatically restarts the node application when changes in the directory and/or files are detected. Type this in the console/terminal application of your OS, be sure that you are in the root of your Directory.
+9. Now as you can see, every time we make a modification in the server we have to stop node and run it again as in the step 6. Here is when the magic of Node start to happen. As  you might recall, Node.js allows you to install third party (modules, API, functions and more) thourgh package manager. In this case, we will install [nodemon](https://www.npmjs.com/package/nodemon), a tool that automatically restarts the node application when changes in the directory and/or files are detected. Type this in the console/terminal application of your OS, be sure that you are in the root of your Directory.
 
 ```console
 npm install nodemon
@@ -94,7 +94,7 @@ Get-ExecutionPolicy
 Exit
 ```
 
-10. If everything went well, now we have next to our SimpleServer.js file 3 new items: i) a folder named: node_modules, annd ii) two files, namely: packege-lock.json and package.json.
+10. If everything went well, now we have next to our SimpleServer.js file 3 new items: i) a folder named: node_modules, and ii) two files, namely: packege-lock.json and package.json.
 
 11. For this step, instead of running our SimpleServer.js using the code from step 6, let's do it like this.
 
@@ -102,7 +102,7 @@ Exit
 nodemon path/to/your/SimpleServer.js
 ```
 
-- Try to change something to see that the server is refreshed everytime there is a change  in the code.
+- Try to change something to see that the server is refreshed everytime there is a change in the code.
 - Using nodemon during developing time might save you a lot of time :)
 - Finally, for this simple server, let's handle requests from the client.
 
@@ -113,7 +113,7 @@ res.write("\nUser is in: " + req.url)
 ```
 
 - Try to put this URL in the browser <http://localhost:8000/Novice>
-- As you can observe,now we are able two handle routes in case our web app has different pages.
+- As you can observe, now we are able two handle routes in case our web app has different pages.
 - If you read the documentation you will see that there are many ways to handla request an it's parameters. Things could get really complicated if we for example, have many routes, models, and exchange constantly information between server and client. The good news are that NodeJS has a lot of dependencies/frameworks that we can use in order to reduce our coding ;).
 - So stop your currener server if running, save you files and continue to the next part fo this tutorial.
 
@@ -121,7 +121,7 @@ res.write("\nUser is in: " + req.url)
 
 ### What is Express
 
-- Expreess is a middleware that helps us to deal with server-side logic for web and mobile applications
+- Express is a middleware that helps us to deal with server-side logic for web and mobile applications
 - It's easy to use and plays along with many other frameworks, such as react, mongo,angular, etc.
 - It's javascript :)
 
@@ -138,7 +138,7 @@ Be aware that you have to do all of them in order.
 
 ### The server
 
-1. Create a folder and name it *CMS* (short for Content Managment System)
+1. Clone this [repository](https://gitlab.com/famnit-up/systems-iii/frameworks/-/tree/main)  and create a folder at the root lavel and name it *CMS* (short for Content Managment System)
 
 2. Navigate inside the folder and run the command
 
