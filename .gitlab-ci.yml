@@ -17,9 +17,13 @@ install_dependencies:
         - CMS/package-lock.json
     paths:
       - CMS/node_modules/
+      
 start_app:
   stage: test
   needs:
     - install_dependencies
   script: npm start
+  artifacts:
+    paths:
+          - CMS
   
