@@ -1,0 +1,11 @@
+{
+  "name": "cms",
+  "version": "1.0.0",
+  "description": "my first node app",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "elena",
+  "license": "ISC"
+}
