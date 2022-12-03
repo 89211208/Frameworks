@@ -7,5 +7,6 @@ install_dependencies:
   stage: build
   script: 
     - npm install
-  path:
-  /CMS/
+  artifacts:
+    paths:
+      - CMS/
