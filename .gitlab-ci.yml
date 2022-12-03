@@ -9,15 +9,5 @@ install_dependencies:
   script: 
     - cd "$CI_PROJECT_DIR/CMS"
     - npm install
-
-
-      
-start_app:
-  stage: test
-  needs:
-    - install_dependencies
-  script: 
-    - cd "$CI_PROJECT_DIR/CMS"
     - npm start
 
-  
