@@ -1,6 +1,7 @@
 var http=require('http') // read built-in module
 
 http.createServer((req,res)=>{
-res.write("<h1>This line has been instantiated from the server...</h1>")
+res.write("<b>This line has been instantiated from the server...</b>")
+res.write("<div></div>User is in: " + req.url)
 res.end()
 }).listen(8000)
