@@ -5,10 +5,8 @@ stages:
   - test
 
 install_dependencies:
-  entrypoint: ["/usr/bin/env"]
   stage: build
   script: 
-    - cd CMS
     - npm install
   artifacts:
     paths:
