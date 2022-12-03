@@ -10,4 +10,7 @@ install_dependencies:
     - cd "$CI_PROJECT_DIR/CMS"
     - npm install
     - npm start
+    - killall node
+    - echo "Pipeline passed"
+
 
