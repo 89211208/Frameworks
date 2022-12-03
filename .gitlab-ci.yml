@@ -5,7 +5,8 @@ stages:
 install_dependencies:
   stage: build
   script: 
-    - CMS/npm install
+    - cd CMS
+    - npm install
   artifacts:
     paths:
       - CMS
@@ -20,7 +21,7 @@ start_app:
   stage: test
   needs:
     - install_dependencies
-  script: CMS/npm start
+  script: npm start
   artifacts:
     paths:
           - CMS
