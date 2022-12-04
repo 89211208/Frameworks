@@ -5,8 +5,6 @@ stages:
 
 test_server:
   stage: test
-  needs:
-    - install_dependencies
   before_script:
     - cd "$CI_PROJECT_DIR/CMS"
     - npm install
