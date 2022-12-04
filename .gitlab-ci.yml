@@ -27,6 +27,6 @@ test_server:
   script:
     - cd "$CI_PROJECT_DIR/CMS"
     - npm test
-  after_scritp:
+  after_script:
     - killall node
 
