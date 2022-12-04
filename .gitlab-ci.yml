@@ -23,9 +23,9 @@ test_server:
     - install_dependencies
   before_script:
     - cd "$CI_PROJECT_DIR/CMS"
-    - node start
+    - npm start
   script:
     - npm test
   after_script:
-    - killall node
+    - kill -9 $(ps aux | grep '\snode\s' | awk '{print $2}')
 
