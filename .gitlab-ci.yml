@@ -1,21 +1,7 @@
 image: node:latest
 
 stages:
-  - build
   - test
-
-install_dependencies:
-  stage: build
-  script: 
-    - cd "$CI_PROJECT_DIR/CMS"
-    - npm install
-    - echo "Dependencies installed"
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules/
 
 test_server:
   stage: test
@@ -23,6 +9,8 @@ test_server:
     - install_dependencies
   before_script:
     - cd "$CI_PROJECT_DIR/CMS"
+    - npm install
+    - echo "Dependencies installed"
     - npm start
   script:
     - npm test
