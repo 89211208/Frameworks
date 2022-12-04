@@ -1,4 +1,13 @@
-image: node:14.19.0
+image: node:latest
+
+# Cache modules in between jobs
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .npm/
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
 
 stages:
   - build
@@ -9,7 +18,15 @@ install_dependencies:
   script: 
     - cd "$CI_PROJECT_DIR/CMS"
     - npm install
+    - echo "Dependencies installed"
+  
+test_server:
+  stage: test
+  before_script:
+    - node start
+  script:
+    - cd "$CI_PROJECT_DIR/CMS"
     - npm test
-    - echo "Pipeline passed"
-
+  after_scritp:
+    - killall node
 
