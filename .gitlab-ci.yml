@@ -9,9 +9,5 @@ test_server:
     - cd "$CI_PROJECT_DIR/CMS"
     - npm install
     - echo "Dependencies installed"
-    - npm start
   script:
     - npm test
-  after_script:
-    - kill -9 $(ps aux | grep '\snode\s' | awk '{print $2}')
-
