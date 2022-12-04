@@ -22,6 +22,7 @@ test_server:
   needs:
     - install_dependencies
   before_script:
+    - cd "$CI_PROJECT_DIR/CMS"
     - node start
   script:
     - npm test
