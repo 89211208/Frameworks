@@ -1,10 +1,14 @@
 const express = require("express")
 const app = express()
-const port = 5002
+const port = 5000
 
 app.get("/", (req, res)=>{
-	res.send("Hola muchacos.. ")
+    res.send("Hola muchachos...")
 })
 
 app.listen(process.env.PORT || port, ()=>{
-	console.log(Server is running ))
+    console.log(`Server is running on port: ${process.env.PORT 
+        || port}`)
+})
+
+
