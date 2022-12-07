@@ -4,7 +4,7 @@
 ## MySQL
 
 At this point of the Lab Sessions, I assume that you have experience using MySQL and phpMyAdmin. So We will skip that part and let you creat your own models.
-As the intention of these set of tutorials is to replicate the funcionality of your ***codeigniter project*** we will consume the your existing DB but we will create our own CRUD operations using NodeJS and ExpressJS.
+As the intention of these set of tutorials is to replicate the functionality of your ***codeigniter project*** we will consume the your existing DB but we will create our own CRUD operations using NodeJS and ExpressJS.
 
 ## NodeJS
 
