@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 
-const port = 5007
+const port = 5030
 
 app.get("/",(req,res)=>{
     res.send("Hola muchachos...")
