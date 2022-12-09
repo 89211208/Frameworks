@@ -1,7 +1,10 @@
 const express = require("express")
+require("dotenv").config()
 const app = express()
-
 const port = 5030
+
+const novice = require("./routes/novice")
+app.use('/novice', novice)
 
 app.get("/",(req,res)=>{
     res.send("Hola muchachos...")
