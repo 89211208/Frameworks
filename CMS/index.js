@@ -1,12 +1,17 @@
 const express = require("express")
-const exp = express()
+require("dotenv").config()
+const app = express()
+const port = 5016
 
-const port = 5012
-exp.get("/",(req,res)=>{
-    res.send("Thank you..")
+const novice = require("./routes/novice")
+
+app.use("/novice",novice)
+
+app.get("/",(req,res)=>{
+    res.send("Thank you..Boi")
 })
 
 // App should listen 
-exp.listen(process.env.PORT || port, ()=>{
-    console.log('Server is running on port: ${process.env.PORT || port}')
+app.listen(process.env.PORT || port, ()=>{
+    console.log(`Server is running on port: ${process.env.PORT || port}`)
 })
