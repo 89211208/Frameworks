@@ -11,5 +11,7 @@ app.get("/",(req,res)=>{
 app.use("/novice", novice)
 
 app.listen(process.env.PORT || port, ()=>{
-    console.log("Server is running on port: + ${process.env.PORT || port")
+    console.log(`Server is running on port: ${process.env.PORT || port}`)
 })
+
+module.exports = novice
