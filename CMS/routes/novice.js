@@ -2,8 +2,9 @@ const express= require("express")
 const novice = express.Router();
 const DB = require("../DB/dbConn")
 
+
 //Gets all the news in the DB 
-novice.get('/', async (req,res, next)=>{
+novice.get('/', async (req,res, next)=>{            
     try{
         var queryResult=await DB.allNovice();
         res.json(queryResult)

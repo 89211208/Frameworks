@@ -35,6 +35,27 @@ const  conn = mysql.createConnection({
       })
     })
   }
+
+  dataPool.AuthUser=(username)=>
+{
+  return new Promise ((resolve, reject)=>{
+    conn.query('SELECT * FROM user_login WHERE user_name = ?', username, (err,res, fields)=>{
+      if(err){return reject(err)}
+      return resolve(res)
+    })
+  })  
+	
+}
+
+dataPool.AddUser=(username,email,password)=>{
+  return new Promise ((resolve, reject)=>{
+    conn.query(`INSERT INTO user_login (user_name,user_email,user_password) VALUES (?,?,?)`, [username, email, password], (err,res)=>{
+      if(err){return reject(err)}
+      return resolve(res)
+    })
+  })
+}
+
   
 
  conn.connect((err) => {
