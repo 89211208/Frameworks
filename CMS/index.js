@@ -1,9 +1,16 @@
 const express = require('express')
+require('dotenv').config
 const app = express()
-const port = 5000
+const port = 5024
+
+const novice = require("./routes/novice")
+app.use('/novice', novice)
+
 app.get("/",(req,res)=>{
     req.setEncoding("Hola muchachos....")
 })
+
+
 
 app.listen(process.env.PORT || port, ()=>{
     console.log(`Server is running on port: ${process.env.PORT || port}`)
