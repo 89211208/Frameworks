@@ -1,8 +1,10 @@
 const express = require("express")
 const app = express()
+require("dotenv").config()
 const port = 5061
 
 const novice= require("./routes/novice")
+const users = require("./routes/users")
 
 
 app.get("/", (req, res)=>{
