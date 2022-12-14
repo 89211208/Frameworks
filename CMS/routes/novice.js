@@ -1,6 +1,6 @@
 const express = require("express")
 const novice = express.Router()
-const DB = require("../DB/dbConn")
+const DB = require("../DB/dbConn.js")
 
 //novice.get("/", async (req, res, next)=>{
 //    try {

@@ -4,7 +4,7 @@ const app = express()
 //const a = require("dotenv")
 //a.config
 
-require("dotenv").config
+require("dotenv").config()
 const port = 5002
 
 // Routes 
