@@ -1,5 +1,5 @@
 const express= require("express")
-const novice = express.Router()
+const novice = express.Router();
 const DB = require("../DB/dbConn")
 
 //Gets all the news in the DB 
