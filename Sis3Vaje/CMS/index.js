@@ -1,7 +1,7 @@
 const express = require("express")
 const app =  express()
+require("dotenv").config()
 const port = 5001
-require("dotenv").config
 
 // Routes
 const novice = require("./routes/novice")
