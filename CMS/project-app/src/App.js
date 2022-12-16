@@ -68,15 +68,15 @@ class App extends React.Component {
                     </li>
 
                     <li className="nav-item">
-                      <a onClick={()=>this.QSetView({page:"news"})} className="nav-link "  href="#">News</a>
+                      <a onClick={()=>this.QSetView({page:"novice"})} className="nav-link "  href="#">News</a>
                     </li>
                       
                     <li className="nav-item">
-                      <a onClick={()=>this.QSetView({page:"add news"})} className="nav-link">Add news</a>
+                      <a onClick={()=>this.QSetView({page:"addnew"})} className="nav-link">Add news</a>
                     </li>
 
                     <li className="nav-item"> 
-                      <a onClick={()=>this.QSetView({page:"sign up"})} className="nav-link " href="#">Sign up</a>
+                      <a onClick={()=>this.QSetView({page:"signup"})} className="nav-link " href="#">Sign up</a>
                     </li>
 
                     <li className="nav-item" >
