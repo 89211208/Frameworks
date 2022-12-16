@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-require(".env").config()
+require("dotenv").config()
 const port = 5077
 const novice = require("./routes/novice")
 
