@@ -43,7 +43,7 @@ class SignupView extends React.Component
       <input onChange={(e)=>this.QGetTextFromField(e)} name="password" type="password" className="form-control" id="exampleInputPassword1"/>
     </div>
   </form>
-  <button style={{margin:"10px"}}  className="btn btn-primary bt">Submit</button>
+  <button onClick={()=>this.QSentUserToParent()} style={{margin:"10px"}}  className="btn btn-primary bt">Submit</button>
 </div>
     )
   }

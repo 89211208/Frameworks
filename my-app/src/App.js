@@ -39,7 +39,7 @@ class App extends React.Component
       case "signup":
         return <SignupView QUserFromChild={this.QHandleUserLog}/>
       case "login":
-        return <LoginView />
+        return <LoginView QUserFromChild={this.QHandleUserLog}/>
       case "novica":
         return <SingleNovicaView QIDFromChild={this.QSetView}/>
     
