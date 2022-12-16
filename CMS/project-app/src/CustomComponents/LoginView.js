@@ -2,6 +2,26 @@ import React from 'react'
 
 class LoginView extends React.Component
 {
+
+  constructor(props)
+    {
+        super(props);
+        this.state={
+            user:{
+                type:"login"
+            }
+        }
+    }
+    QGetTextFromField=(e)=>{
+        this.setState(prevState=>({
+            user:{...prevState.user,[e.target.name]:e.target.value}
+        }))
+    }
+
+    QSentUserToParent=()=>{
+        this.props.QUserFromChild(this.state.user)
+    }
+
   render()
   {
     return(
@@ -9,14 +29,14 @@ class LoginView extends React.Component
  <form style={{margin:"20px"}} >
    <div className="mb-3">
      <label className="form-label">Username</label>
-     <input name="username"  type="text" className="form-control" id="exampleInputEmail1"/>
+     <input onChange={(e)=>this.QGetTextFromField(e)} name="username"  type="text" className="form-control" id="exampleInputEmail1"/>
    </div>
    <div className="mb-3">
      <label className="form-label">Password</label>
-     <input name="password" type="password" className="form-control" id="exampleInputPassword1"/>
+     <input onChange={(e)=>this.QGetTextFromField(e)} name="password" type="password" className="form-control" id="exampleInputPassword1"/>
    </div>
  </form>
- <button  style={{margin:"10px"}} className="btn btn-primary bt">Sign up</button>
+ <button onClick={()=>this.QSentUserToParent()} style={{margin:"10px"}}  className="btn btn-primary bt">Submit</button>
 </div>
     )
   }
