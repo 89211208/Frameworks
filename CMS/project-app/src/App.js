@@ -1,6 +1,11 @@
 import React from 'react'
 import NoviceView from './CustomComponents/NoviceView'
 import HomeView from './CustomComponents/HomeView'
+import AboutView from './CustomComponents/AboutView'
+import AddNovicaView from './CustomComponents/AddNovicaView'
+import LoginView from './CustomComponents/LoginView'
+import SignupView from './CustomComponents/SignupView'
+import SingleNovicaView from './CustomComponents/SingleNovicaView'
 
 
 class App extends React.Component {
