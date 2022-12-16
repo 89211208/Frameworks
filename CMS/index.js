@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 require("dotenv").config()
-const port = 1337
+const port = 7878
 const novice = require("./routes/novice")
 const users = require("./routes/users")
 
