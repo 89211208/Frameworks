@@ -7,6 +7,7 @@ novice.get('/', async (req,res, next)=>{
     try{
         var queryResult=await DB.allNovice();
         res.json(queryResult)
+        console.log("Response sent")
     }
     catch(err){
         console.log(err)
