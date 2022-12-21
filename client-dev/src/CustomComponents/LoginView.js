@@ -19,6 +19,29 @@ class LoginView extends React.Component {
     this.props.QUserFromChild(this.state.user);
   };
 
+  QPostLogin = () => {
+    axios
+      .post(
+        "/users/login",
+        {
+          username: this.state.user.username,
+          password: this.state.user.password,
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        console.log("Sent to server...");
+        this.QSendUser2Parent(response.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  QSendUser2Parent = (obj) => {
+    this.props.QUserFromChild(obj);
+  };
+
   render() {
     return (
       <div

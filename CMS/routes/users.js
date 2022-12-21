@@ -1,6 +1,29 @@
 const express = require("express");
 const users = express.Router();
 const DB = require("../DB/dbConn.js");
+const session = require("express-session");
+
+users.use(
+  session({
+    secret: "somesecret",
+    resave: false,
+    saveUninitialized: false,
+    cookies: {
+      expires: 60 * 2,
+    },
+  })
+);
+
+users.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({
+      logged: true,
+      user: req.session.user,
+    });
+  } else {
+    res.send({ logged: false });
+  }
+});
 
 //Checks if user submited both fields, if user exist and if the combiation of user and password matches
 users.post("/login", async (req, res) => {

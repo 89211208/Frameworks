@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class SignupView extends React.Component {
   constructor(props) {
@@ -17,6 +18,20 @@ class SignupView extends React.Component {
 
   QSentUserToParent = () => {
     this.props.QUserFromChild(this.state.user);
+  };
+  QPostSignup = () => {
+    axios
+      .post("/users/register", {
+        username: this.state.user.username,
+        email: this.state.user.email,
+        password: this.state.user.password,
+      })
+      .then((response) => {
+        console.log("Sent to server...");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -69,7 +84,7 @@ class SignupView extends React.Component {
           </div>
         </form>
         <button
-          onClick={() => this.QSentUserToParent()}
+          onClick={(() => this.QSentUserToParent(), this.QPostSignup())}
           style={{ margin: "10px" }}
           className="btn btn-primary bt"
         >

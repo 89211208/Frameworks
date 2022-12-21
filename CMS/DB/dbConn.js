@@ -1,9 +1,10 @@
 const express = require("express");
+const mysql = require("mysql2");
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: "Qcodeigniter",
+  database: "SISIII2023_89211304",
 });
 
 conn.connect((err) => {
@@ -82,4 +83,3 @@ dataPool.AddUser = (username, email, password) => {
     );
   });
 };
-

@@ -12,8 +12,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     //state is where our "global" variable will be store
-    this.state = { CurrentPage: "home" };
+    this.state = { CurrentPage: "home", Novica: 1 };
   }
+
+  componentDidMount() {
+    axios.get("/users/login").then((response) => {
+      console.log(response);
+      this.setState({ userStatus: response.data });
+    });
+  }
+
+  QSetUser = (obj) => {
+    this.setState({
+      userStatus: { logged: true, user: [obj] },
+    });
+  };
 
   QGetView = (state) => {
     let page = state.CurrentPage;
@@ -30,9 +43,11 @@ class App extends React.Component {
       case "signup":
         return <SignupView QUserFromChild={this.QHandleUserLog} />;
       case "login":
-        return <LoginView />;
+        return <LoginView QUserFromChild={this.QSetUser} />;
       case "novica":
-        return <SingleNovicaView QIDFromChild={this.QSetView} />;
+        return (
+          <SingleNovicaView data={state.Novica} QIDFromChild={this.QSetView} />
+        );
       default:
         return <HomeView />;
     }
@@ -41,6 +56,7 @@ class App extends React.Component {
   QSetView = (obj) => {
     this.setState({
       CurrentPage: obj.page,
+      Novica: obj.id || 0,
     });
   };
 
