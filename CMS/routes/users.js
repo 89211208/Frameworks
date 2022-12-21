@@ -1,5 +1,5 @@
 const express= require("express")
-const users = express.Router();
+const users = express.Router()
 const DB=require('../DB/dbConn.js')
 
 //Checks if user submited both fields, if user exist and if the combiation of user and password matches
@@ -18,8 +18,8 @@ users.post('/login', async (req, res) => {
                     {
                     req.session.user=queryResult;
                     console.log(req.session.user)
-                    console.log(queryResult)
-                    console.log("SESSION VALID");
+                     console.log(queryResult)
+                     console.log("SESSION VALID");
                     
                      //res.redirect('/');
                     }

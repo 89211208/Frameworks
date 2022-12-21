@@ -1,19 +1,15 @@
 {
-  "name": "cms-ciber",
+  "name": "cms",
   "version": "1.0.0",
-  "description": "My CMS project",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "cool",
-    "js",
-    "blabla"
-  ],
-  "author": "Ciber",
+  "author": "QAU",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql2": "^2.3.3"

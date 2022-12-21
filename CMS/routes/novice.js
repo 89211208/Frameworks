@@ -1,6 +1,6 @@
 const express= require("express")
 const novice = express.Router();
-const DB = require("../DB/dbConn")
+const DB=require('../DB/dbConn.js')
 
 //Gets all the news in the DB 
 novice.get('/', async (req,res, next)=>{
@@ -55,7 +55,4 @@ novice.post('/', async (req,res, next)=>{
 
   
 }) 
-module.exports=novice
-
-
 module.exports=novice
