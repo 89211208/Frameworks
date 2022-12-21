@@ -1,4 +1,4 @@
-import React from 
+import React from "react";
 import HomeView form './CustomComponents/HomeView'
 
 class App extends React.Component{
