@@ -1,4 +1,5 @@
-import React from // TODO
+import React from 
+import HomeView form './CustomComponents/HomeView'
 
 class App extends React.Component{
   render()
@@ -44,7 +45,7 @@ return(
         </div>
 
         <div id="viewer" className="row container">
-
+          <HomeView />
         </div>
 
     </div>
