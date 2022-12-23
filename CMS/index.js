@@ -1,19 +1,29 @@
-const express = require ("express")
-const app = express()
-require("dotenv").config
-const port = 5003 
+const express = require("express");
+const novice = require("./routes/novice");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
-//routes
-const novice= require("./routes/novice")
-//Routes
+const app = express();
 
-app.get("/", (req, res)=> {
-    res.send("dej mi denar zdej takoj hahah")
-})
+const port = 5003;
 
-app.use('/novice', novice);
+app.use("/novice", novice);
 
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser("somesecret"));
+app.use(
+  cors({
+    origin: ["http://88.200.63.148:5003"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
-app.listen(process.env.PORT || port, () => {
-    console.log(`Server is running on port: ${process.env.PORT || port}`)
-})
+app.get("/", (req, res) => {
+  res.send("Dej mi denar zdej takoj!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at ${port}`);
+});
