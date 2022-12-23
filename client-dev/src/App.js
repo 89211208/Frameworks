@@ -1,22 +1,54 @@
 import React from "react";
-
-//import Custom Components
-import AboutView from "./CustomComponents/AboutView.js";
-import AddNovicaView from "./CustomComponents/AddNovicaView.js";
-import HomeView from "./CustomComponents/HomeView.js";
-import LoginView from "./CustomComponents/LoginView.js";
-import NoviceView from "./CustomComponents/NoviceView.js";
-import SignupView from "./CustomComponents/SignupView.js";
-import SingleNovicaView from "./CustomComponents/SingleNovicaView.js";
-
+import HomeView from "./CustomComponents/HomeView";
+import AboutView from "./CustomComponents/AboutView";
+import NoviceView from "./CustomComponents/NoviceView";
+import AddNovicaView from "./CustomComponents/AddNovicaView";
+import LoginView from "./CustomComponents/LoginView";
+import SignupView from "./CustomComponents/SignupView";
+import SingleNovicaView from "./CustomComponents/SingleNovicaView";
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  QGetView = (state) => {
+    let page = state.CurrentPage;
+
+    switch (page) {
+      case "home":
+        return <HomeView />;
+      case "about":
+        return <AboutView />;
+      case "novice":
+        return <NoviceView QIDFromChild={this.QSetView} />;
+      case "addnew":
+        return <AddNovicaView />;
+      case "signup":
+        return <SignupView />; // You did everything as it should be, for now I will this property as we wont use it anymore.
+      case "login":
+        return <LoginView />;
+      case "novica":
+        return <SingleNovicaView QIDFromChild={this.QSetView} />;
+    }
+  };
+
+  QSetView = (obj) => {
+    this.setState({
+      CurrentPage: obj.page
+    });
+  };
+
   render() {
     return (
       <div id="APP" className="container">
         <div id="menu" className="row">
           <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
-              <a className="navbar-brand" href="#">
+              <a
+                onClick={() => this.QSetView({ page: "home" })}
+                className="navbar-brand"
+                href="#"
+              >
                 Home
               </a>
               <button
@@ -37,29 +69,51 @@ class App extends React.Component {
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link " href="#">
+                    <a
+                      onClick={() => this.QSetView({ page: "about" })}
+                      className="navbar-brand"
+                      href="#"
+                    >
                       About
                     </a>
                   </li>
 
                   <li className="nav-item">
-                    <a className="nav-link " href="#">
+                    <a
+                      onClick={() => this.QSetView({ page: "novice" })}
+                      className="navbar-brand"
+                      href="#"
+                    >
                       News
                     </a>
                   </li>
 
                   <li className="nav-item">
-                    <a className="nav-link">Add news</a>
+                    <a
+                      onClick={() => this.QSetView({ page: "addnew" })}
+                      className="navbar-brand"
+                      href="#"
+                    >
+                      Add news
+                    </a>
                   </li>
 
                   <li className="nav-item">
-                    <a className="nav-link " href="#">
+                    <a
+                      onClick={() => this.QSetView({ page: "signup" })}
+                      className="navbar-brand"
+                      href="#"
+                    >
                       Sign up
                     </a>
                   </li>
 
                   <li className="nav-item">
-                    <a className="nav-link " href="#">
+                    <a
+                      onClick={() => this.QSetView({ page: "login" })}
+                      className="navbar-brand"
+                      href="#"
+                    >
                       Login
                     </a>
                   </li>
@@ -70,11 +124,10 @@ class App extends React.Component {
         </div>
 
         <div id="viewer" className="row container">
-          <HomeView/>
+          {this.QGetView(this.state)}
         </div>
       </div>
     );
   }
 }
-
 export default App;
