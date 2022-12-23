@@ -1,24 +1,38 @@
 import React from "react";
+import axios from "axios";
 
 class SignupView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {
-        type: "signup"
-      }
+        type: "signup",
+      },
     };
   }
   QGetTextFromField = (e) => {
     this.setState((prevState) => ({
-      user: { ...prevState.user, [e.target.name]: e.target.value }
+      user: { ...prevState.user, [e.target.name]: e.target.value },
     }));
   };
 
-  // This function wont be used anymore
-  // QSentUserToParent = () => {
-  //   this.props.QUserFromChild(this.state.user);
-  // };
+  QSentUserToParent = () => {
+    this.props.QUserFromChild(this.state.user);
+  };
+  QPostSignup = () => {
+    axios
+      .post("/users/register", {
+        username: this.state.user.username,
+        email: this.state.user.email,
+        password: this.state.user.password,
+      })
+      .then((response) => {
+        console.log("Sent to server...");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
@@ -29,13 +43,14 @@ class SignupView extends React.Component {
           marginLeft: "auto",
           marginRight: "auto",
           marginTop: "10px",
-          marginBottom: "10px"
+          marginBottom: "10px",
         }}
       >
         <form style={{ margin: "20px" }}>
           <div className="mb-3">
             <label className="form-label">Username</label>
             <input
+              onChange={(e) => this.QGetTextFromField(e)}
               name="username"
               type="text"
               className="form-control"
@@ -47,8 +62,8 @@ class SignupView extends React.Component {
             <label className="form-label">Email address</label>
             <input
               onChange={(e) => this.QGetTextFromField(e)}
-              name="username"
-              type="text"
+              name="email"
+              type="email"
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
@@ -61,16 +76,15 @@ class SignupView extends React.Component {
             <label className="form-label">Password</label>
             <input
               onChange={(e) => this.QGetTextFromField(e)}
-              name="username"
-              type="text"
+              name="password"
+              type="password"
               className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              id="exampleInputPassword1"
             />
           </div>
         </form>
         <button
-          // onClick={() => this.QSentUserToParent()} Unsued
+          onClick={(() => this.QSentUserToParent(), this.QPostSignup())}
           style={{ margin: "10px" }}
           className="btn btn-primary bt"
         >
@@ -80,4 +94,5 @@ class SignupView extends React.Component {
     );
   }
 }
+
 export default SignupView;

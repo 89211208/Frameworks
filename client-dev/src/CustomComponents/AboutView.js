@@ -12,4 +12,5 @@ class AboutView extends React.Component {
     );
   }
 }
+
 export default AboutView;
