@@ -1,10 +1,10 @@
-const mysql = require("mysql2")
+const mysql2 = require("mysql2")
 
-const  conn = mysql.createConnection({
+const  conn = mysql2.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS, 
-    database: 'Qcodeigniter',
+    database:"Qcodeigniter"
   })
 
 let dataPool = {}
