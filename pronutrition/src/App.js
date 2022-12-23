@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import HomeView from "./CustomComponents/HomeView";
 import AboutView from "./CustomComponents/AboutView";
 import NoviceView from "./CustomComponents/NoviceView";
@@ -6,13 +7,21 @@ import AddNovicaView from "./CustomComponents/AddNovicaView";
 import LoginView from "./CustomComponents/LoginView";
 import SignupView from "./CustomComponents/SignupView";
 import SingleNovicaView from "./CustomComponents/SingleNovicaView";
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state={
+      CurrentPage:"home",
+      Novica:1,
+    }
+ 
   }
+
   QGetView = (state) => {
     let page = state.CurrentPage;
+    
 
     switch (page) {
       case "home":
@@ -24,21 +33,30 @@ class App extends React.Component {
       case "addnew":
         return <AddNovicaView />;
       case "signup":
-        return <SignupView />; // You did everything as it should be, for now I will this property as we wont use it anymore.
+        return <SignupView QUserFromChild={this.QHandleUserLog} />;
       case "login":
-        return <LoginView />;
+        return <LoginView QUserFromChild={this.QSetUser} />;
       case "novica":
-        return <SingleNovicaView QIDFromChild={this.QSetView} />;
+        return (
+          <SingleNovicaView data={state.Novica} QIDFromChild={this.QSetView} />
+        );
+      default:
+        return <HomeView />;
     }
   };
 
-  QSetView = (obj) => {
+
+  QSetView=(obj)=>
+  {
     this.setState({
-      CurrentPage: obj.page
-    });
-  };
+      CurrentPage:obj.page,
+      Novica:obj.id || 0
+    })
+  }
+  
 
   render() {
+    ///Here we should put what  we wan to display in the browser, for example
     return (
       <div id="APP" className="container">
         <div id="menu" className="row">
@@ -71,7 +89,7 @@ class App extends React.Component {
                   <li className="nav-item">
                     <a
                       onClick={() => this.QSetView({ page: "about" })}
-                      className="navbar-brand"
+                      className="nav-link "
                       href="#"
                     >
                       About
@@ -81,7 +99,7 @@ class App extends React.Component {
                   <li className="nav-item">
                     <a
                       onClick={() => this.QSetView({ page: "novice" })}
-                      className="navbar-brand"
+                      className="nav-link "
                       href="#"
                     >
                       News
@@ -91,8 +109,7 @@ class App extends React.Component {
                   <li className="nav-item">
                     <a
                       onClick={() => this.QSetView({ page: "addnew" })}
-                      className="navbar-brand"
-                      href="#"
+                      className="nav-link"
                     >
                       Add news
                     </a>
@@ -101,7 +118,7 @@ class App extends React.Component {
                   <li className="nav-item">
                     <a
                       onClick={() => this.QSetView({ page: "signup" })}
-                      className="navbar-brand"
+                      className="nav-link "
                       href="#"
                     >
                       Sign up
@@ -111,7 +128,7 @@ class App extends React.Component {
                   <li className="nav-item">
                     <a
                       onClick={() => this.QSetView({ page: "login" })}
-                      className="navbar-brand"
+                      className="nav-link "
                       href="#"
                     >
                       Login
@@ -124,10 +141,11 @@ class App extends React.Component {
         </div>
 
         <div id="viewer" className="row container">
-          {this.QGetView(this.state)}
+          <div className="row container">{this.QGetView(this.state)}</div>
         </div>
       </div>
     );
   }
 }
+
 export default App;

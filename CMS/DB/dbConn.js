@@ -4,7 +4,7 @@ const conn = mysql.createConnection({
     host:process.env.DB_HOST,
     user:process.env.DB_USER,
     password:process.env.DB_PASS,
-    database:"Qcodeigniter"
+    database:"SISIII2023_89211177"
 })
 
 let dataPool = {}
