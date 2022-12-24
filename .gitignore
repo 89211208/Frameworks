@@ -3,4 +3,5 @@
 text.txt
 /00_NODE
 /01-2022
-/CMS/node_modules
+/back-end/node_module
+/front-end/node_modules
