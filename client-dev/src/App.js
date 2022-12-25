@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import AboutView from "./CustomComponents/AboutView";
 import AddNovicaView from "./CustomComponents/AddNovicaView";
 import HomeView from "./CustomComponents/HomeView";

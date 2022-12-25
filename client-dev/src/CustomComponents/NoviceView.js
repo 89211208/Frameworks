@@ -39,15 +39,8 @@ class NoviceView extends React.Component {
                       <h5 className="card-title">{d.title}</h5>
                       <p className="card-text">{d.slug}</p>
                     </div>
-                    <button
-                      style={{ margin: "10px" }}
-                      className="btn btn-primary bt"
-                      onClick={() =>
-                        this.QSetViewInParent({ page: "novica", id: d.id })
-                      }
-                    >
-                      Read more
-                    </button>
+                    <button onClick={()=>this.QSetViewInParent({page:"novica"})} style={{margin:"10px"}}  className="btn btn-primary bt">Read more</button>
+
                   </div>
                 </div>
               );
