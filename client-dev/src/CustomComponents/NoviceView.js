@@ -2,6 +2,11 @@ import React from "react";
 import axios from "axios";
 
 class NoviceView extends React.Component {
+
+  state = {
+    Novice: []
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -10,9 +15,13 @@ class NoviceView extends React.Component {
   }
 
   componentDidMount() {
+    console.log('componentDiDMount');
+
+    const vm = this;
+
     axios.get("/novice").then((response) => {
-      console.log(response.data);
-      this.setState({
+      console.log(response, response.data);
+      vm.setState({
         Novice: response.data,
       });
     });
@@ -23,15 +32,14 @@ class NoviceView extends React.Component {
   };
 
   render() {
-    let data = this.state.data;
-
+    let data = this.state.Novice;
     return (
       <div
         className="row row-cols-1 row-cols-md-3 g-4"
         style={{ margin: "10px" }}
       >
         {data.length > 0
-          ? data.map((d) => {
+          ? data.map((d) => {//
               return (
                 <div className="col" key={d.id}>
                   <div className="card">
