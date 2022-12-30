@@ -74,7 +74,7 @@ componentDidMount()
 4. In the *render* method create a variable data that stores what is contained in *Novice* from our local state.
 
 ```javascript
-let data=this.state.data
+let data=this.state.Novice
 ```
 
 5. Replace the old code from return with this:
