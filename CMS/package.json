@@ -6,11 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+<<<<<<< HEAD
   "author": "QAU",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql2": "^2.3.3"
+=======
+  "author": "urahara",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+>>>>>>> 14b7f5ed5c1561970241887f027e4a90d5976772
   }
 }
