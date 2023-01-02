@@ -1,7 +1,25 @@
 import React from "react";
-
+import axios from 'axios';
 class LoginView extends React.Component {
-  render() {
+    QSendUser2Parent=(obj)=>{
+        this.props.QUserFromChild(obj)
+    }
+
+    QPostLogin=()=>{
+        axios.post('/users/login',{
+            username:this.state.user.username,
+            password:this.state.user.password
+        },{withCredentials:true})
+            .then(response=>{
+                console.log("Sent to server...")
+                this.QSendUser2Parent(response.data[0])
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }
+
+    render() {
     return (
       <div
         className="card"

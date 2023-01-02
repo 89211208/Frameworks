@@ -5,10 +5,12 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-scripts": "5.0.1"
+    "babel-preset-react": "^6.24.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
+  "proxy": "http://88.200.63.148:5051",
   "devDependencies": {
     "@babel/runtime": "7.13.8",
     "typescript": "4.1.3"

@@ -1,21 +1,36 @@
 import React from "react";
-
+import axios from 'axios';
 class SignupView extends React.Component {
-  constructor(props) {
+  constructor(props)
+  {
     super(props);
-    this.state = {
-      user: {
-        type: "signup"
+    this.state={
+      user:{
+        type:"signup"
       }
-    };
+    }
   }
+  QPostSignup=()=>{
+    axios.post('/users/register',{
+      username:this.state.user.username,
+      email:this.state.user.email,
+      password:this.state.user.password
+    })
+        .then(response=>{
+          console.log("Sent to server...")
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+  }
+
   QGetTextFromField = (e) => {
     this.setState((prevState) => ({
       user: { ...prevState.user, [e.target.name]: e.target.value }
     }));
   };
 
-  // This function wont be used anymore
+  // This function won't be used anymore
   // QSentUserToParent = () => {
   //   this.props.QUserFromChild(this.state.user);
   // };
@@ -36,6 +51,7 @@ class SignupView extends React.Component {
           <div className="mb-3">
             <label className="form-label">Username</label>
             <input
+                onChange={(e)=>this.QGetTextFromField(e)}
               name="username"
               type="text"
               className="form-control"
@@ -70,7 +86,7 @@ class SignupView extends React.Component {
           </div>
         </form>
         <button
-          // onClick={() => this.QSentUserToParent()} Unsued
+            onClick={()=>this.QPostSignup()}
           style={{ margin: "10px" }}
           className="btn btn-primary bt"
         >

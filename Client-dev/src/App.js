@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import HomeView from "./CustomComponents/HomeView";
 import AboutView from "./CustomComponents/AboutView";
 import NoviceView from "./CustomComponents/NoviceView";
@@ -9,7 +9,11 @@ import SingleNovicaView from "./CustomComponents/SingleNovicaView";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+      this.state={
+        CurrentPage:"home",
+        Novica:1,
+      }
+
   }
   QGetView = (state) => {
     let page = state.CurrentPage;
@@ -24,19 +28,40 @@ class App extends React.Component {
       case "addnew":
         return <AddNovicaView />;
       case "signup":
-        return <SignupView />; // You did everything as it should be, for now I will this property as we wont use it anymore.
+        return <SignupView />; // You did everything as it should be, for now I will this property as we won't use it anymore.
       case "login":
-        return <LoginView />;
+        return <LoginView QUserFromChild={this.QSetUser}/>;
       case "novica":
-        return <SingleNovicaView QIDFromChild={this.QSetView} />;
+        return <SingleNovicaView data={state.Novica}  QIDFromChild={this.QSetView}/>;
     }
   };
+  componentDidMount(){
+    axios.get('/users/login')
+        .then(response=>{
+          console.log(response)
+          this.setState({userStatus:response.data})
+
+        })
+  }
+
+  QSetUser=(obj)=>{
+    this.setState({
+      userStatus:{logged:true,user:[obj]}
+    })
+  }
 
   QSetView = (obj) => {
     this.setState({
-      CurrentPage: obj.page
+      CurrentPage: obj.page,
+      Novica:obj.id || 0
     });
   };
+  componentDidMount(){
+    axios.get('/users/login')
+        .then(response=>{
+          console.log(response)
+        })
+  }
 
   render() {
     return (
