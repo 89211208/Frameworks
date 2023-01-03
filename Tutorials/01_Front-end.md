@@ -5,7 +5,7 @@
 1. Install react using npx 
 
 ``` console
-    npx creat-react-app name-of-your-app
+    npx create-react-app name-of-your-app
 ```
 -in my case I have installed my app in the root folder of my CMS project and I have named it: client-dev
 
@@ -281,12 +281,12 @@ import HomeView from './CustomComponents/HomeView';
   <HomeView />
 </div>
 ```
-9. Save and reload. Are you able to see the content of the compoment? If yes, you can continue to the next part of the tutorial;  otherwise check what are you missing from our previous steps.
+9. Save and reload. Are you able to see the content of the compoment? If yes, you can continue to the next part of the tutorial;  otherwise check what are you missing from the previous steps.
 
 
 ## User interactions
 
-Now it's time to prepare our application to be ready to receive data and handle users input data. 
+Now it's time to prepare the application to be ready to receive data and handle users input data. 
 
 In this session we will do the logic for i) the menu, so the app know what CustomComponent to show, ii) the forms, so the app stores locally th data to be send.  
 
@@ -338,7 +338,7 @@ constructor(props)
   {this.QGetView(this.state)}
 </div>
 ```
-- So far not too much has change, we still shoud be able to see the content of *HomeView* component as it is the defaul value
+- So far not too much has change, we still should be able to see the content of *HomeView* component as it is the defaul value
 
 5. Use the following piece of code
 ```javascript
@@ -349,7 +349,7 @@ QSetView=(obj)=>
   })
 }
 ```
-- This is  custom method that gets an object as parameter and every time it is invoked, it calls a in-build method form react to update the *state* of our app
+- This is a custom method that gets an object as parameter and every time it is invoked, it calls a in-build method form react to update the *state* of our app
 - In this case we are updating the *CurrenPage* and we are assignin the value of the property *page*
 
 6. To each *a* tag in our ***app.js*** add an onClick attribute and call the method we created in previous step
@@ -438,10 +438,10 @@ constructor(props)
 10. Save and reload.
 
 - Done!!. We have finished preparing our Front-end.
-- The remaining thing is to connected with our back-end and preapre it to be deployed.
+- The remaining thing is to connect it with our back-end and preapre it to deploy it.
 
-For now zip everithing we have done today and submit it to e-classroom.
-Next session, in order to finish our project it's mandatory to finilize the back and the end accordigly to the previous tutorials.
+For now zip everything we have done today and submit it to e-classroom/push it to the repo.
+Next session, in order to finish our project it is mandatory to finilize the back-end accordigly to the previous tutorials.
 
 
 

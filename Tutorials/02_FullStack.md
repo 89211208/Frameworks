@@ -1,13 +1,13 @@
 # Full Stack
 
 ## Stablishing the communications Server-Client
-So far  in these set of tutorials we have: i) building a server using **Express.js**, ii) establishing a connections with the db using **mysql** and iii) building the client using **React.js**.
+So far  in these set of tutorials we have: i) built a server using **Express.js**, ii) established a connections with the db using **mysql** and iii) bulit the client(front-end) using **React.js**.
 
-Finally is time to connect, to do that we will:
+Finally is time to connect them all, to achieve this, we will:
 
-- Install [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) as node depency.
-- Consume the API we created during Back-end tutorial
-- Create a proxy so we dont have to change the endpoints while building the final version of our client
+- Install [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) as node dependency.
+- Consume the API we created during **back-end** tutorial
+- <strike>Create a proxy so we dont have to change the endpoints while building the final version of our client</strike>
 - Create the logic in the client side to handle the responses from the server
 - Define a way to keep an user logged
 
@@ -66,12 +66,12 @@ componentDidMount()
 }
 ```
 - *componentDidMount* is part of the life cycle of ***React.js*
-- Notice that we are using axios and the *get* method to access the *'/novice'* endoint
-- As we are working asynchronous requests we can use the method *.then*
+- Notice that we are using axios and the *get* method to access the *'/novice'* endpoint
+- As we are working with asynchronous requests we can use the method *.then*
 - Once there is a response we access to the data object.
-- We are using setState from **React.js** to put the data in the local state
+- We are using **setState** from **React.js** to put the data in the local state
 
-4. In the *render* method create a variable data that stores what is contained in *Novice* from our local state.
+4. In the **render** method create a variable data that stores what is contained in *Novice* from the local state.
 
 ```javascript
 let data=this.state.Novice
@@ -97,25 +97,25 @@ let data=this.state.Novice
              :"Loading..."}
         </div>
 ```
-- We are using ternary operator to make a conditional rendering
-- If there is data the map the item using this tags
+- We are using the ternary operator (**?**) to make a conditional rendering
+- If there is data, then we map each item using those wrapping tags
 
 6. If you did everything ok, you should be able to see the news from our data base.
 
 ### Proxy
 
-1. Go to the *package.json* from our *client-dev* app and insert the rule for the proxy 
+1.<strike> Go to the *package.json* from our *client-dev* app and insert the rule for the proxy 
 
 ```javascript
 "proxy":"http://88.200.63.148:5000"
 ```
 2. Now fix the **NoviceView** and change the axios enpoint for *'/novice'*
-- From now on we won't need to specify the whole URL
+- From now on we won't need to specify the whole URL</strike> 
 
 
 ### Client logic
 
-I want to let you know that many things in this next section can be improve in many ways, but as we are triying ot learn we will follow the long path. So this section will be subdivided into:
+I want to let you know that many things in this next section can be improve in many ways, but as we are triying ot learn we will follow the long/naive path. So this section will be subdivided into:
 
 - Single news
 - Add news 
@@ -125,7 +125,7 @@ I want to let you know that many things in this next section can be improve in m
 
 
 #### Single news
-So far we have the view all the news available on our db. Each of  them is send from the server with the corresponding id, so it will be easy to make a request to the server and get an specific novica. However remember that each component (NoviceView and SingleNovicaView) is child of our App.js component. So how can we share data between children? 
+So far we have the view all the news available on the db. Each of  them is sent from the server with the corresponding id, so it will be easy to make a request to the server and get an specific **novica**. However remember that each component (NoviceView and SingleNovicaView) are children of the App.js component. So how can we share data between children? 
 
 To address this question, let's make the following:
 
@@ -138,13 +138,13 @@ QSetViewInParent=(obj)=>{
 
 - Pay attention to *this.props.QIFromChild(obj)*. It is injecting and object as a parameter.
 
-2. In the *button* of this component add an onClick prop and call our previously decalred method
+2. In the *button* of this component add an onClick prop and call the previous declared method
 ```javascript
 onClick={()=>this.QSetViewInParent({page:"novica", id: d.id})} 
 ```
-- Every time the user click on the button of the mapped novica, we pass as an object the view we want to render and also the id of the view
+- Every time the user clicks on the button of the mapped novica, we pass as an object  that identifies the view we want to render and also the id of that view
 
-3. Go to **App.js** and ad  **Novica** key to our local state object and ssign the default value 1:
+3. Go to **App.js** and add **Novica** key to our local state object and use the default value 1:
 ```javascript
 this.state={
     this.state={
@@ -154,7 +154,7 @@ this.state={
 }
 ```
 
-4. In the QSetView Method also insert the key but passing the id.
+4. In the QSetView method also insert the key but passing the id.
 ```javascript
 QSetView=(obj)=>
 {
@@ -307,7 +307,7 @@ QPostNovica=()=>{
         }
     }
 ```
-3. Add to everyinput tag the atttribute name and assign the corresponding value, for example:
+3. Add to every input tag the atttribute name and assign the corresponding value, for example:
 ```javascript
 <input name="username" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
 ```
@@ -320,7 +320,7 @@ QGetTextFromField=(e)=>{
         }))
     }
 ```
-- Looks similar to somethign we did before?
+- Looks similar to something we did before?
 5. Add the prop on change to each input elememnt in out JSX
 
 ```javascript
@@ -351,7 +351,7 @@ QPostSignup=()=>{
 - Same case as before, it woul be a nice idea to revise the data in teh client side before submit it
 
 #### Using cookies and express-session
- For login, we have to repeat same step 1-7 from previous views(AddNovicaView and SignupView). But as yo might notice, if we refresh the browser our session will expire, but moreover non of the other react components know tha we are logged in the app. To solve this issue let's:
+ For login, we have to repeat same step 1-7 from previous views(AddNovicaView and SignupView). But as you might notice, if we refresh the browser our session will expire, but moreover non of the other react components know tha we are logged in the app. To solve this issue let's:
 
  1. In the server side install:
  ```console
@@ -413,7 +413,7 @@ componentDidMount(){
 
 
 
-6. In ***LoginView.js*** update the post response so the user data can be caught by the **app.js***
+6. In ***LoginView.js*** update the post response so the user data can be caught by the **App.js***
 ```javascript
    QPostLogin=()=>{
         axios.post('/users/login',{
@@ -451,7 +451,7 @@ QSetUser=(obj)=>{
   })
 }
 ```
-- we are customizing our response so it matches with the one we defined in the server side
+- we are customizing the response so it matches with the one we defined in the server side
 
 10. In componentDidMouth method update make get call to our api to check if we are logged. 
  ```javascript
