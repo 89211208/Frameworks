@@ -1,9 +1,13 @@
 const express = require("express")
 const app = express()
 const dotenv = require("dotenv")
+const cors = require("cors")
 dotenv.config()
 
 const port = 5000
+
+app.use(express.urlencoded({extended : true}))
+app.use(cors({}))
 
 app.get("/",(req,res)=>{
     res.send("This text must be changed to a static file")
