@@ -17,10 +17,6 @@ class NoviceView extends Component {
     axios.get("/novice").then(res=>{
       this.setState({
         novice:res.data
-      }).catch(err=>{
-        if (err){
-          console.log("Error: "+err.message)
-        }
       })
     })
   }
@@ -32,7 +28,7 @@ class NoviceView extends Component {
         {data.length > 0 ? 
          data.map(d =>{
           return(
-            <div className="col">
+            <div className="col" key={d.id}>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{d.title}</h5>

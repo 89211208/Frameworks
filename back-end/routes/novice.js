@@ -12,7 +12,8 @@ novice.get('/', async (req, res, next)=>{
     }
 })
 
-novice.get("/:id", async (req, res)=>{
+novice.get("/:id", async (req, res, next)=>{
+    console.log(res.params)
     try {
         console.log(req)
         let queryResult = await db.oneNovica(req.params.id)
@@ -23,7 +24,7 @@ novice.get("/:id", async (req, res)=>{
     }
 })
 
-novice.post("/", async (req, res)=>{
+novice.post("/", async (req, res, next)=>{
     let [title, slug, text] = req.body
     let isAcompleteNovica = title && slug && text
 

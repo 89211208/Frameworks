@@ -14,7 +14,7 @@ class App extends Component {
     super(props);
     this.state = {
       currentPage: "none",
-      novicaId: 0
+      novica: 0
     };
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
   QSetView = (obj) => {
     this.setState({
       currentPage: obj.page,
-      novicaId: obj.id || 0
+      novica: obj.id || 0
     });
   };
 
@@ -42,7 +42,7 @@ class App extends Component {
       case "login":
         return <LoginView QUserFromChild={this.QHandleUserLog} />;
       case "novica":
-        return <SingleNovicaView QViewFromChild={this.QSetView} />;
+        return <SingleNovicaView QViewFromChild={this.QSetView} data={this.state.novica} />;
       default:
         return <HomeView />;
     }
@@ -53,6 +53,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state)
     return (
       <div id="APP" className="container">
         <div id="menu" className="row">
