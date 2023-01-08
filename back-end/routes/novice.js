@@ -1,4 +1,4 @@
-const express= require("express")
+const express = require("express")
 const novice = express.Router();
 const db = require("../db/conn")
 
@@ -13,7 +13,6 @@ novice.get('/', async (req, res, next)=>{
 })
 
 novice.get("/:id", async (req, res, next)=>{
-    console.log(res.params)
     try {
         console.log(req)
         let queryResult = await db.oneNovica(req.params.id)
@@ -25,10 +24,13 @@ novice.get("/:id", async (req, res, next)=>{
 })
 
 novice.post("/", async (req, res, next)=>{
-    let [title, slug, text] = req.body
+    console.log(req.body)
+    let title = req.body.title
+    let slug = req.body.slug
+    let text = req.body.text
     let isAcompleteNovica = title && slug && text
 
-    if (isAcompleteNovica ) {
+    if (isAcompleteNovica) {
         try {
             let queryResult = await db.createNovica(title, slug, text)
             if (queryResult.affectedRows) {

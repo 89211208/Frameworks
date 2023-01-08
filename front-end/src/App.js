@@ -36,7 +36,7 @@ class App extends Component {
       case "novice":
         return <NoviceView QIDFromChild={this.QSetView} />;
       case "addnovica":
-        return <AddNovicaView />;
+        return <AddNovicaView QViewFromChild={this.QSetView}/>;
       case "signup":
         return <SignupView QUserFromChild={this.QHandleUserLog} />;
       case "login":
