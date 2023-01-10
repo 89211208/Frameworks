@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Component } from "react";
 
 class LoginView extends Component {
@@ -16,9 +17,21 @@ class LoginView extends Component {
     }));
   };
 
-  QSendUserToParent = (state) => {
-    this.props.QUserFromChild(state.user);
+  QSendUser2Parent = (obj) => {
+    this.props.QUserFromChild(obj);
   };
+
+  QPostLogin = () => {
+    let user = this.state.user
+    axios.post("/users/login",{
+      username: user.username,
+      password: user.password
+    },{withCredentials:true}).then(res=>{
+      console.log("Sent to the server...")
+      console.log(res.data)
+      this.QSendUser2Parent(res.data)
+    })
+  }
 
   render() {
     return (
@@ -55,11 +68,11 @@ class LoginView extends Component {
           </div>
         </form>
         <button
-          onClick={() => this.QSendUserToParent(this.state)}
+          onClick={() => this.QPostLogin()}
           style={{ margin: "10px" }}
           className="btn btn-primary bt"
         >
-          Sign up
+          Log in
         </button>
       </div>
     );

@@ -7,6 +7,7 @@ import LoginView from "./CustomComponents/LoginView";
 import NoviceView from "./CustomComponents/NoviceView";
 import SignupView from "./CustomComponents/SignupView";
 import SingleNovicaView from "./CustomComponents/SingleNovicaView";
+import axios from "axios";
 
 class App extends Component {
   // constructor defined
@@ -14,7 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       currentPage: "none",
-      novica: 0
+      novica: 0,
+      userStatus:{logged:false}
     };
   }
 
@@ -36,11 +38,11 @@ class App extends Component {
       case "novice":
         return <NoviceView QIDFromChild={this.QSetView} />;
       case "addnovica":
-        return <AddNovicaView QViewFromChild={this.QSetView}/>;
+        return state.userStatus.logged ? <AddNovicaView QViewFromChild={this.QSetView}/> : "You are not logged in.";
       case "signup":
         return <SignupView />;
       case "login":
-        return <LoginView QUserFromChild={this.QHandleUserLog} />;
+        return <LoginView QUserFromChild={this.QSetUser} />;
       case "novica":
         return <SingleNovicaView QViewFromChild={this.QSetView} data={this.state.novica} />;
       default:
@@ -48,9 +50,17 @@ class App extends Component {
     }
   };
 
-  QHandleUserLog = (obj) => {
-    this.QSetView({ page: "home" });
+  QSetUser = (obj) => {
+    this.setState({
+      userStatus:{logged:true, user:obj}
+    })
   };
+
+  componentDidMount(){
+    axios.get("/users/login").then(res=>{
+      console.log(res)
+    })
+  }
 
   render() {
     console.log(this.state)
