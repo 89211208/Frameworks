@@ -6,11 +6,15 @@ dotenv.config()
 
 const port = 5000
 
+const users = require("./routes/users")
+
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(cors({
     methods:["GET","POST"]
 }))
+
+app.use("/users", users)
 
 app.get("/",(req,res)=>{
     res.send("This text must be changed to a static file")

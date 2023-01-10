@@ -28,7 +28,9 @@ users.post("/login", async(req, res)=>{
 })
 
 users.post("/register",async(req, res)=>{
-    let [username, password, email] = req.body
+    let username = req.body.username
+    let password = req.body.password
+    let email = req.body.email
     let isUserComplete = username && password && email
     if (isUserComplete){
         try {
@@ -45,3 +47,5 @@ users.post("/register",async(req, res)=>{
     }
     res.end()
 })
+
+module.exports = users
