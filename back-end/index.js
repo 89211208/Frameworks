@@ -3,12 +3,14 @@ const app = express()
 const dotenv = require("dotenv")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
+const path = require("path")
 dotenv.config()
 
 const port = 5000
 
 const users = require("./routes/users")
 
+app.use(express.static(path.join(__dirname, "build")))
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(cors({
@@ -22,7 +24,7 @@ app.use(cors({
 app.use("/users", users)
 app.use(cookieParser("somesecret"))
 app.get("/",(req,res)=>{
-    res.send("This text must be changed to a static file")
+    res.sendFile(path.join(__dirname, "build", "index.html"))
 })
 
 //Import opur custom modules-controllers

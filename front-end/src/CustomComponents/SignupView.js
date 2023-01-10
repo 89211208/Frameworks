@@ -19,7 +19,7 @@ class SignupView extends Component {
 
   QPostSignUp = () => {
     let user = this.state.user
-    axios.post("http://localhost:5000/users/register/",{
+    axios.post("/users/register/",{
       username: user.username,
       email: user.email,
       password: user.password

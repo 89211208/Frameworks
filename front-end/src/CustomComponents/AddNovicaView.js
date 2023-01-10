@@ -17,7 +17,7 @@ class AddNovicaView extends Component {
   };
 
   QPostNovica = () => {
-    axios.post("http://localhost:5000/novice",{
+    axios.post("/novice",{
       title: this.state.novica.title,
       slug: this.state.novica.slug,
       text: this.state.novica.text

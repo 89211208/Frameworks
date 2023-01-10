@@ -16,7 +16,7 @@ class SingleNovicaView extends Component {
   };
 
   componentDidMount(){
-    axios.get("http://localhost:5000/novice/"+this.props.data).then(res=>{
+    axios.get("/novice/"+this.props.data).then(res=>{
       this.setState({
         novica:res.data
       })
