@@ -1,0 +1,32 @@
+body {
+    background-color: #EBF2FA;
+}
+.btn {
+    background-color: #418B80;
+    border: black;
+}
+
+.btn:hover {
+    background-color: #418B80;
+}
+
+.btn:active {
+    background-color: #346F67 !important;
+}
+
+h3 {
+    color: white;
+}
+
+.navbar {
+    background-color: #51527B !important;
+}
+
+.card {
+    background-color: #51527B;
+    box-shadow: 0px 2px 3px rgb(56, 56, 56);
+}
+
+.card-body, label, #emailHelp {
+    color: white;
+}
