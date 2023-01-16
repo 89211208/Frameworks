@@ -74,7 +74,7 @@ class App extends Component {
                 className="navbar-brand"
                 href="#"
               >
-                Home
+                RideUp
               </a>
               <button
                 className="navbar-toggler"
