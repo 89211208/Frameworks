@@ -33,7 +33,7 @@ class AddNovicaView extends Component {
     console.log(this.state.novica)
     return (
       <div className="card" style={{ margin: "10px" }}>
-        <h3 style={{ margin: "10px" }}>Welcome user</h3>
+        <h3 style={{ margin: "10px" }}>Add ride</h3>
         <div className="mb-3" style={{ margin: "10px" }}>
           <label className="form-label">Title</label>
           <input
@@ -63,7 +63,7 @@ class AddNovicaView extends Component {
         onClick={()=>this.QPostNovica()}
         className="btn btn-primary bt" 
         style={{ margin: "10px" }}>
-          Send
+          Post ride
         </button>
       </div>
     );

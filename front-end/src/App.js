@@ -38,7 +38,7 @@ class App extends Component {
       case "novice":
         return <NoviceView QIDFromChild={this.QSetView} />;
       case "addnovica":
-        return state.userStatus.logged ? <AddNovicaView QViewFromChild={this.QSetView}/> : "You are not logged in.";
+        return state.userStatus.logged ? <AddNovicaView QViewFromChild={this.QSetView}/> : <p>You need to be logged in to add a ride.</p>;
       case "signup":
         return <SignupView />;
       case "login":
@@ -108,7 +108,7 @@ class App extends Component {
                       className="nav-link "
                       href="#"
                     >
-                      News
+                      Upcoming Rides
                     </a>
                   </li>
 
@@ -118,7 +118,7 @@ class App extends Component {
                       className="nav-link"
                       href="#"
                     >
-                      Add news
+                      Add ride
                     </a>
                   </li>
 
