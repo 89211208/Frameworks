@@ -5,8 +5,8 @@ class HomeView extends Component {
     return (
       <div className="card" style={{ margin: "10px" }}>
         <div className="card-body">
-          <h5 className="card-title">Welcome to RideUp!</h5>
-          <p className="card-text">Ride with ease, wherever you please.</p>
+          <h5 className="card-title">Welcome to HomeNet!</h5>
+          <p className="card-text">Effortless home management</p>
         </div>
       </div>
     );

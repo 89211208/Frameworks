@@ -32,8 +32,9 @@ class AddNovicaView extends Component {
   render() {
     console.log(this.state.novica)
     return (
-      <div className="card" style={{ margin: "10px" }}>
-        <h3 style={{ margin: "10px" }}>Add ride</h3>
+      <div className="card" style={{ maxWidth: "400px", width: "100%", margin: "10px auto", textAlign:"left" }}>
+        <h3 style={{ margin: "10px", textAlign:"center", margin:"10px 0 0 0" }}>Add a property</h3>
+        <hr style={{ borderTop: "1px solid #ccc", margin: "10px 0" }} />
         <div className="mb-3" style={{ margin: "10px" }}>
           <label className="form-label">Title</label>
           <input

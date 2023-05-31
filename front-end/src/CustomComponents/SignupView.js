@@ -35,58 +35,64 @@ class SignupView extends Component {
       <div
         className="card"
         style={{
-          width: "400px",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "10px",
-          marginBottom: "10px"
+          maxWidth: "400px",
+          width: "100%",
+          margin: "10px auto",
+          paddingLeft: "16px",
+          paddingRight: "16px"
         }}
       >
-        <form style={{ margin: "20px" }}>
-          <div className="mb-3">
-            <label className="form-label">Username</label>
-            <input
+      <h1 className="card-title" style={{ textAlign: "center", color:"white", margin:"8px 0 0 0" }}>
+              Sign up
+      </h1>
+      <hr style={{ borderTop: "1px solid #ccc", margin: "10px 0" }} />
+      <form style={{ margin: "0px" }}>
+        <div className="mb-3">
+          <label className="form-label">Username</label>
+          <input
               onChange={(e) => this.QGetTextFromField(e)}
               name="username"
               type="text"
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-            />
-          </div>
-          <div className="mb-3">
-            <label className="form-label">Email address</label>
-            <input
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Email address</label>
+          <input
               onChange={(e) => this.QGetTextFromField(e)}
               name="email"
               type="email"
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
-            </div>
+          />
+          <div id="emailHelp" className="form-text">
+            We'll never share your email with anyone else.
           </div>
-          <div className="mb-3">
-            <label className="form-label">Password</label>
-            <input
-              onChange={(e) => this.QGetTextFromField(e)}
-              name="password"
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-            />
-          </div>
-        </form>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Password</label>
+          <input
+            onChange={(e) => this.QGetTextFromField(e)}
+            name="password"
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+      </form>
+      <div style={{ textAlign: "center" }}>
         <button
           onClick={() => this.QPostSignUp(this.state)}
-          style={{ margin: "10px" }}
+          style={{ margin: "0 auto", marginBottom:"16px"}}
           className="btn btn-primary bt"
         >
           Submit
         </button>
       </div>
+    </div>
     );
   }
 }

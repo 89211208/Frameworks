@@ -7,6 +7,8 @@ import LoginView from "./CustomComponents/LoginView";
 import NoviceView from "./CustomComponents/NoviceView";
 import SignupView from "./CustomComponents/SignupView";
 import SingleNovicaView from "./CustomComponents/SingleNovicaView";
+import UserView from "./CustomComponents/UserView";
+
 import axios from "axios";
 
 class App extends Component {
@@ -33,16 +35,18 @@ class App extends Component {
     switch (page) {
       case "home":
         return <HomeView />;
+      case "user":
+        return state.userStatus.logged ? <UserView /> : <p>You are not logged in.</p>;
       case "about":
         return <AboutView />;
       case "novice":
-        return <NoviceView QIDFromChild={this.QSetView} />;
+        return state.userStatus.logged ? <NoviceView QIDFromChild={this.QSetView} /> : <p>Log in to see your properties.</p>;
       case "addnovica":
-        return state.userStatus.logged ? <AddNovicaView QViewFromChild={this.QSetView}/> : <p>You need to be logged in to add a ride.</p>;
+        return state.userStatus.logged ? <AddNovicaView QViewFromChild={this.QSetView}/> : <p>You need to be logged in to add a property.</p>;
       case "signup":
         return <SignupView />;
       case "login":
-        return <LoginView QUserFromChild={this.QSetUser} />;
+        return state.userStatus.logged ? <p>You are logged in.</p> : <LoginView QUserFromChild={this.QSetUser}/>;
       case "novica":
         return <SingleNovicaView QViewFromChild={this.QSetView} data={this.state.novica} />;
       default:
@@ -74,7 +78,7 @@ class App extends Component {
                 className="navbar-brand"
                 href="#"
               >
-                RideUp
+                HomeNet
               </a>
               <button
                 className="navbar-toggler"
@@ -108,7 +112,7 @@ class App extends Component {
                       className="nav-link "
                       href="#"
                     >
-                      Upcoming Rides
+                      My properties
                     </a>
                   </li>
 
@@ -118,7 +122,7 @@ class App extends Component {
                       className="nav-link"
                       href="#"
                     >
-                      Add ride
+                      Add a property
                     </a>
                   </li>
 
@@ -138,7 +142,16 @@ class App extends Component {
                       className="nav-link "
                       href="#"
                     >
-                      Login
+                      Log in
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      onClick={() => this.QSetView({ page: "user" })}
+                      className="nav-link "
+                      href="#"
+                    >
+                      My profile
                     </a>
                   </li>
                 </ul>
