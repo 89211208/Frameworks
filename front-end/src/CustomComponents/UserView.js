@@ -5,7 +5,7 @@ class UserView extends Component {
     return (
       <div className="card" style={{ margin: "10px" }}>
         <div className="card-body">
-          <h5 className="card-title">User</h5>
+          <h5 className="card-title">{props.username}</h5>
           <p className="card-text">User details</p>
         </div>
       </div>

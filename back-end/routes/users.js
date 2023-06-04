@@ -38,9 +38,11 @@ users.post("/login", async(req, res)=>{
                     console.log("SESSION VALID")
                 }else{
                     console.log("INCORRECT PASSWORD")
+                    res.sendStatus(403)
                 }
             }else{
                 console.log("USER NOT REGISTERED")
+                res.sendStatus(403)
             }
         } catch (error) {
             console.log(error)
@@ -48,8 +50,8 @@ users.post("/login", async(req, res)=>{
         }
     }else{
         console.log("Please enter username and password.")
+        res.sendStatus(401)
     }
-    res.end()
 })
 
 users.post("/register",async(req, res)=>{

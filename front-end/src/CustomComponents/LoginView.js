@@ -26,10 +26,13 @@ class LoginView extends Component {
     axios.post("/users/login",{
       username: user.username,
       password: user.password
-    },{withCredentials:true}).then(res=>{
+    },{withCredentials:true})
+    .then(res=>{
       console.log("Sent to the server...")
       console.log(res.data)
       this.QSendUser2Parent(res.data)
+    }).catch(err => {
+      console.error(err);
     })
   }
 
