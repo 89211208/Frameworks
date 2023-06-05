@@ -25,14 +25,16 @@ novice.get("/:id", async (req, res, next)=>{
 
 novice.post("/", async (req, res, next)=>{
     console.log(req.body)
-    let title = req.body.title
-    let slug = req.body.slug
-    let text = req.body.text
-    let isAcompleteNovica = title && slug && text
+    let id_organizacije = req.body.id_organizacije
+    let id_stavbe = req.body.id_stavbe
+    let leto_izgradnje = req.body.leto_izgradnje
+    let st_nadstropij = req.body.st_nadstropij
+    let st_vhodov = req.body.st_vhodov
+    let katastrska_st = req.body.katastrska_st
 
-    if (isAcompleteNovica) {
+    if (true) {
         try {
-            let queryResult = await db.createNovica(title, slug, text)
+            let queryResult = await db.createNovica(id_organizacije, id_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje)
             if (queryResult.affectedRows) {
                 console.log("New article added!")
             }
@@ -47,4 +49,4 @@ novice.post("/", async (req, res, next)=>{
     
 })
 
-module.exports=novice
+module.exports = novice

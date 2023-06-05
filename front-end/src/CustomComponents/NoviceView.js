@@ -28,7 +28,7 @@ class NoviceView extends Component {
         {data.length > 0 ? 
          data.map(d =>{
           return(
-            <div className="col" key={d.id_organizacije}>
+            <div className="col" key={d.id_stavbe}>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Katastrska številka: {d.katastrska_st}</h5>

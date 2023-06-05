@@ -26,9 +26,9 @@ dataPool.oneNovica=(id)=>{
     })
 }
 
-dataPool.createNovica=(title,slug,text)=>{
+dataPool.createNovica=(id_organizacije, id_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje)=>{
     return new Promise ((resolve, reject)=>{
-      conn.query(`INSERT INTO news (title,slug,text) VALUES (?,?,?)`, [title, slug, text], (err,res)=>{
+      conn.query(`INSERT INTO Stavba (id_organizacije, id_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje) VALUES (?,?,?,?,?,?)`, [id_organizacije, id_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje], (err,res)=>{
         if(err){return reject(err)}
         return resolve(res)
       })

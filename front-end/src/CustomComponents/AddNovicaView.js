@@ -18,9 +18,12 @@ class AddNovicaView extends Component {
 
   QPostNovica = () => {
     axios.post("/novice",{
-      title: this.state.novica.title,
-      slug: this.state.novica.slug,
-      text: this.state.novica.text
+      id_organizacije: this.state.novica.id_organizacije,
+      id_stavbe: this.state.novica.id_stavbe,
+      leto_izgradnje: this.state.novica.leto_izgradnje,
+      st_nadstropij: this.state.novica.st_nadstropij,
+      st_vhodov: this.state.novica.st_vhodov,
+      katastrska_st: this.state.novica.katastrska_st
     }).then(res=>{
       console.log("Sent to server...")
     }).catch(error=>{
@@ -36,29 +39,54 @@ class AddNovicaView extends Component {
         <h3 style={{ margin: "10px", textAlign:"center", margin:"10px 0 0 0" }}>Add a property</h3>
         <hr style={{ borderTop: "1px solid #ccc", margin: "10px 0" }} />
         <div className="mb-3" style={{ margin: "10px" }}>
-          <label className="form-label">Title</label>
+          <label className="form-label">ID Organizacije</label>
           <input
-          name="title"
+          name="id_organizacije"
           onChange={(e)=>this.QGetTextFromField(e)} 
-          type="text" 
+          type="number" 
           className="form-control" 
-          placeholder="Title..." />
+          placeholder="ID organizacije..." />
         </div>
         <div className="mb-3" style={{ margin: "10px" }}>
-          <label className="form-label">Slug</label>
+          <label className="form-label">Leto izgradnje</label>
           <input
-          name="slug"
+          name="leto_izgradnje"
+          onChange={(e)=>this.QGetTextFromField(e)} 
+          type="number" 
+          className="form-control" 
+          placeholder="Leto izgradnje..." />
+        </div>
+        <div className="mb-3" style={{ margin: "10px" }}>
+          <label className="form-label">Število nadstropij</label>
+          <input
+          name="st_nadstropij"
+          onChange={(e)=>this.QGetTextFromField(e)} 
+          type="number" className="form-control" 
+          placeholder="Število nadstropij..." />
+        </div>
+        <div className="mb-3" style={{ margin: "10px" }}>
+          <label className="form-label">Število vhodov</label>
+          <input
+          name="st_vhodov"
+          onChange={(e)=>this.QGetTextFromField(e)} 
+          type="number" className="form-control" 
+          placeholder="Število vhodov..." />
+        </div>
+        <div className="mb-3" style={{ margin: "10px" }}>
+          <label className="form-label">Katastrska številka</label>
+          <input
+          name="katastrska_st"
           onChange={(e)=>this.QGetTextFromField(e)} 
           type="text" className="form-control" 
-          placeholder="Slug..." />
+          placeholder="Katastrska Številka" />
         </div>
         <div className="mb-3" style={{ margin: "10px" }}>
-          <label className="form-label">Text</label>
-          <textarea
-          name="text"
+          <label className="form-label">ID</label>
+          <input
+          name="id_stavbe"
           onChange={(e)=>this.QGetTextFromField(e)} 
-          className="form-control" 
-          rows="3"></textarea>
+          type="number" className="form-control" 
+          placeholder="ID stavbe..." />
         </div>
         <button 
         onClick={()=>this.QPostNovica()}
