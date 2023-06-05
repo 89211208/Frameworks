@@ -28,14 +28,14 @@ class NoviceView extends Component {
         {data.length > 0 ? 
          data.map(d =>{
           return(
-            <div className="col" key={d.id}>
+            <div className="col" key={d.id_organizacije}>
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">{d.title}</h5>
-                  <p className="card-text">{d.slug}</p>
+                  <h5 className="card-title">Katastrska številka: {d.katastrska_st}</h5>
+                  <p className="card-text">Leto izgradnje: {d.leto_izgradnje}</p>
                 </div>
                 <button
-                  onClick={() => this.QSetViewInParent({ page: "novica", id: d.id })}
+                  onClick={() => this.QSetViewInParent({ page: "novica", id: d.id_stavbe })}
                   style={{ margin: "10px" }}
                   className="btn btn-primary bt"
                 >

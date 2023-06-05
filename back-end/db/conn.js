@@ -10,7 +10,7 @@ let dataPool={}
 
 dataPool.allNovice=()=>{
     return new Promise ((resolve, reject)=>{
-      conn.query(`SELECT * FROM news`, (err,res)=>{
+      conn.query(`SELECT * FROM Stavba`, (err,res)=>{
         if(err){return reject(err)}
         return resolve(res)
       })
@@ -19,7 +19,7 @@ dataPool.allNovice=()=>{
 
 dataPool.oneNovica=(id)=>{
     return new Promise ((resolve, reject)=>{
-      conn.query(`SELECT * FROM news WHERE id = ?`, id, (err,res)=>{
+      conn.query(`SELECT * FROM Stavba WHERE id_stavbe = ?`, id, (err,res)=>{
         if(err){return reject(err)}
         return resolve(res)
       })

@@ -30,11 +30,13 @@ class SingleNovicaView extends Component {
       <div className="card" style={{ margin: "10px" }}>
         {novica.length > 0 ?
         <div>
-          <h5 className="card-header">{novica[0].title}</h5>
           <div className="card-body">
-          <h5 className="card-title">{novica[0].slug}</h5>
-          <p className="card-text">{novica[0].text}</p>
-          <button onClick={()=>this.QSetViewInParent({page:"novice"})}  className="btn btn-primary">Return news</button>
+            <h5 className="card-title">Katastrska številka: {novica[0].katastrska_st}</h5>
+            <hr/>
+            <p className="card-text">Leto izgradnje: {novica[0].leto_izgradnje}</p>
+            <p className="card-text">Število nadstropij: {novica[0].st_nadstropij}</p>
+            <p className="card-text">Število vhodov: {novica[0].st_vhodov}</p>
+            <button onClick={()=>this.QSetViewInParent({page:"novice"})}  className="btn btn-primary">Return news</button>
           </div>
         </div>
         : "Loading..."}
