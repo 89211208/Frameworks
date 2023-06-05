@@ -36,7 +36,7 @@ class App extends Component {
       case "home":
         return <HomeView />;
       case "user":
-        return state.userStatus.logged ? <UserView username={username}/> : <p>You are not logged in.</p>;
+        return state.userStatus.logged ? <UserView user={{ username: this.state.userStatus.user.username }} /> : <p>You are not logged in.</p>;
       case "about":
         return <AboutView />;
       case "novice":
@@ -54,12 +54,17 @@ class App extends Component {
     }
   };
 
-  QSetUser = (obj) => {
-    console.log(obj)
+  QSetUser = (user) => {
     this.setState({
-      userStatus:{logged:true, user:obj}
-    })
+      userStatus: {
+        logged: true,
+        user: {
+          username: user.username,
+        },
+      },
+    });
   };
+  
 
   componentDidMount(){
     axios.get("/users/login").then(res=>{

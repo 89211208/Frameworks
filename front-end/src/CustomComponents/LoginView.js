@@ -17,8 +17,9 @@ class LoginView extends Component {
     }));
   };
 
-  QSendUser2Parent = (obj) => {
-    this.props.QUserFromChild(obj);
+  QSendUser2Parent = () => {
+    const { user } = this.state;
+    this.props.QUserFromChild(user);
   };
 
   QPostLogin = () => {
