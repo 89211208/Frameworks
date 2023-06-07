@@ -27,6 +27,7 @@ novice.post("/", async (req, res, next)=>{
     console.log(req.body)
     let id_organizacije = req.body.id_organizacije
     let id_stavbe = req.body.id_stavbe
+    let vrsta_stavbe = req.body.vrsta_stavbe
     let leto_izgradnje = req.body.leto_izgradnje
     let st_nadstropij = req.body.st_nadstropij
     let st_vhodov = req.body.st_vhodov
@@ -34,7 +35,7 @@ novice.post("/", async (req, res, next)=>{
 
     if (true) {
         try {
-            let queryResult = await db.createNovica(id_organizacije, id_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje)
+            let queryResult = await db.createNovica(id_organizacije, id_stavbe, vrsta_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje)
             if (queryResult.affectedRows) {
                 console.log("New article added!")
             }

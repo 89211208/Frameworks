@@ -20,6 +20,7 @@ class AddNovicaView extends Component {
     axios.post("/novice",{
       id_organizacije: this.state.novica.id_organizacije,
       id_stavbe: this.state.novica.id_stavbe,
+      vrsta_stavbe: this.state.novica.vrsta_stavbe,
       leto_izgradnje: this.state.novica.leto_izgradnje,
       st_nadstropij: this.state.novica.st_nadstropij,
       st_vhodov: this.state.novica.st_vhodov,
@@ -38,7 +39,7 @@ class AddNovicaView extends Component {
       <div className="card" style={{ maxWidth: "400px", width: "100%", margin: "10px auto", textAlign:"left" }}>
         <h3 style={{ margin: "10px", textAlign:"center", margin:"10px 0 0 0" }}>Add a property</h3>
         <hr style={{ borderTop: "1px solid #ccc", margin: "10px 0" }} />
-        <div className="mb-3" style={{ margin: "10px" }}>
+        {/*<div className="mb-3" style={{ margin: "10px" }}>
           <label className="form-label">ID Organizacije</label>
           <input
           name="id_organizacije"
@@ -46,7 +47,7 @@ class AddNovicaView extends Component {
           type="number" 
           className="form-control" 
           placeholder="ID organizacije..." />
-        </div>
+        </div>*/}
         <div className="mb-3" style={{ margin: "10px" }}>
           <label className="form-label">Leto izgradnje</label>
           <input
@@ -55,6 +56,18 @@ class AddNovicaView extends Component {
           type="number" 
           className="form-control" 
           placeholder="Leto izgradnje..." />
+        </div>
+        <div className="mb-3" style={{ margin: "10px" }}>
+          <label className="form-label">Vrsta stavbe</label>
+          <select
+            name="vrsta_stavbe"
+            onChange={(e) => this.QGetTextFromField(e)}
+            className="form-control">
+            <option value="">Izberi...</option>
+            <option value="stanovanje">Stanovanje</option>
+            <option value="poslovni objekt">Poslovni objekt</option>
+            <option value="drugo">Drugo</option>
+          </select>
         </div>
         <div className="mb-3" style={{ margin: "10px" }}>
           <label className="form-label">Število nadstropij</label>
@@ -80,15 +93,15 @@ class AddNovicaView extends Component {
           type="text" className="form-control" 
           placeholder="Katastrska Številka" />
         </div>
-        <div className="mb-3" style={{ margin: "10px" }}>
+        {/*<div className="mb-3" style={{ margin: "10px" }}>
           <label className="form-label">ID</label>
           <input
           name="id_stavbe"
           onChange={(e)=>this.QGetTextFromField(e)} 
           type="number" className="form-control" 
           placeholder="ID stavbe..." />
-        </div>
-        <button 
+        </div>*/}
+        <button
         onClick={()=>this.QPostNovica()}
         className="btn btn-primary bt" 
         style={{ margin: "10px" }}>
