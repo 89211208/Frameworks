@@ -23,36 +23,36 @@ users.get("/login",(req, res)=>{
     }
 })
 
-users.post("/login", async(req, res)=>{
-    let username = req.body.username
-    let password = req.body.password
-    let isUserComplete = username && password
+users.post("/login", async (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    let isUserComplete = username && password;
     if (isUserComplete) {
-        try {
-            let queryResult = await db.authUser(username)
-            if (queryResult.length > 0) {
-                if (password === queryResult[0].user_password){
-                    console.log(queryResult[0])
-                    req.session.user = queryResult[0]
-                    res.json(queryResult[0].user_name)
-                    console.log("SESSION VALID")
-                }else{
-                    console.log("INCORRECT PASSWORD")
-                    res.sendStatus(403)
-                }
-            }else{
-                console.log("USER NOT REGISTERED")
-                res.sendStatus(403)
-            }
-        } catch (error) {
-            console.log(error)
-            res.sendStatus(500)
+      try {
+        let queryResult = await db.authUser(username);
+        if (queryResult.length > 0) {
+          if (password === queryResult[0].user_password) {
+            console.log(queryResult[0]);
+            req.session.user = queryResult[0];
+            res.json(queryResult[0]);
+            console.log("SESSION VALID");
+          } else {
+            console.log("INCORRECT PASSWORD");
+            res.sendStatus(403);
+          }
+        } else {
+          console.log("USER NOT REGISTERED");
+          res.sendStatus(403);
         }
-    }else{
-        console.log("Please enter username and password.")
-        res.sendStatus(401)
+      } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+      }
+    } else {
+      console.log("Please enter username and password.");
+      res.sendStatus(401);
     }
-})
+  });  
 
 users.post("/register",async(req, res)=>{
     let username = req.body.username

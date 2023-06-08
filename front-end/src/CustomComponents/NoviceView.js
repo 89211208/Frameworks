@@ -22,35 +22,41 @@ class NoviceView extends Component {
   }
 
   render() {
-    let data = this.state.novice
+    let data = this.state.novice;
     return (
-      <div className="row row-cols-1 row-cols-md-3 g-4" style={{ margin: "10px" }}>
-        {data.length > 0 ? 
-         data.map(d =>{
-          return(
-            <div className="col" key={d.id_stavbe}>
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Katastrska številka: {d.katastrska_st}</h5>
-                  <p className="card-text">Leto izgradnje: {d.leto_izgradnje}</p>
+      <div>
+        <div className="col-auto" style={{ margin: "10px 0" }}>
+          <button className="btn btn-primary bt btn-block" onClick={() => this.QSetViewInParent({ page: "addnovica"})} style={{ margin: "20px", width: "calc(100% - 40px)", marginTop:"10px", marginBottom:"-10px", fontSize:"20px", fontWeight:"bold", color:"white", backgroundColor: "#12159e" }}>
+            +
+          </button>
+        </div>
+        <div className="row row-cols-1 row-cols-md-3 g-4" style={{ margin: "10px" }}>
+          {data.length > 0 ? 
+            data.map(d => {
+              return (
+                <div className="col" key={d.id_stavbe}>
+                  <div className="card">
+                    <div className="card-body">
+                      <h5 className="card-title">Katastrska številka: {d.katastrska_st}</h5>
+                      <p className="card-text">Leto izgradnje: {d.leto_izgradnje}</p>
+                    </div>
+                    <button
+                      onClick={() => this.QSetViewInParent({ page: "novica", id: d.id_stavbe })}
+                      style={{ margin: "10px" }}
+                      className="btn btn-primary bt"
+                    >
+                      Read more
+                    </button>
+                  </div>
                 </div>
-                <button
-                  onClick={() => this.QSetViewInParent({ page: "novica", id: d.id_stavbe })}
-                  style={{ margin: "10px" }}
-                  className="btn btn-primary bt"
-                >
-                  Read more
-                </button>
-              </div>
-            </div>
-          )
-         })
-        :
-        "Loading"}
-        
+              );
+            })
+            : "Loading"
+          }
+        </div>
       </div>
     );
-  }
-}
+  }  
+}  
 
 export default NoviceView;

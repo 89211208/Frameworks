@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {
       currentPage: "none",
       novica: 0,
-      userStatus:{logged:false}
+      userStatus:{logged:false},
     };
   }
 
@@ -36,7 +36,8 @@ class App extends Component {
       case "home":
         return <HomeView />;
       case "user":
-        return state.userStatus.logged ? <UserView user={{ username: this.state.userStatus.user.username }} /> : <p>You are not logged in.</p>;
+        return state.userStatus.logged ?  <UserView user={{ username: this.state.userStatus.user.username, email: this.state.userStatus.user.email }} email={this.state.userStatus.user.email}
+      /> : <p>You are not logged in.</p>;
       case "about":
         return <AboutView />;
       case "novice":
@@ -60,11 +61,11 @@ class App extends Component {
         logged: true,
         user: {
           username: user.username,
+          email: user.email
         },
       },
     });
-  };
-  
+  };  
 
   componentDidMount(){
     axios.get("/users/login").then(res=>{
@@ -122,7 +123,7 @@ class App extends Component {
                     </a>
                   </li>
 
-                  <li className="nav-item">
+                  {/*<li className="nav-item">
                     <a
                       onClick={() => this.QSetView({ page: "addnovica" })}
                       className="nav-link"
@@ -130,7 +131,7 @@ class App extends Component {
                     >
                       Add a property
                     </a>
-                  </li>
+                  </li> */}
 
                   <li className="nav-item">
                     <a

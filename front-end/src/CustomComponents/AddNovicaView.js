@@ -27,11 +27,15 @@ class AddNovicaView extends Component {
       katastrska_st: this.state.novica.katastrska_st
     }).then(res=>{
       console.log("Sent to server...")
+      this.props.QViewFromChild({page:"novice"})
     }).catch(error=>{
       console.log(error)
-    })
-    this.props.QViewFromChild({page:"novice"})
+    })    
   }
+
+  QSetViewInParent = (obj) => {
+    this.props.QViewFromChild(obj);
+  };
 
   render() {
     console.log(this.state.novica)
@@ -101,12 +105,14 @@ class AddNovicaView extends Component {
           type="number" className="form-control" 
           placeholder="ID stavbe..." />
         </div>*/}
-        <button
-        onClick={()=>this.QPostNovica()}
-        className="btn btn-primary bt" 
-        style={{ margin: "10px" }}>
-          Post ride
-        </button>
+        <div style={{ display: "flex", justifyContent: "center", margin: "10px -5px" }}>
+          <button onClick={() => this.QPostNovica()} className="btn btn-primary bt" style={{ margin: "0 15px", width: "100%" }}>
+            Submit
+          </button>
+          <button onClick={() => this.QSetViewInParent({ page: "novice" })} className="btn btn-primary bt" style={{ margin: "0 15px", width: "100%" }}>
+            Back
+          </button>
+        </div>
       </div>
     );
   }

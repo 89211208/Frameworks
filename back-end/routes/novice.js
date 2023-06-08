@@ -12,6 +12,16 @@ novice.get('/', async (req, res, next)=>{
     }
 })
 
+novice.get('/', async (req, res, next)=>{
+    try {
+        let queryResult = await db.noOfNovice()
+        res.json(queryResult)
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500)
+    }
+})
+
 novice.get("/:id", async (req, res, next)=>{
     try {
         console.log(req)

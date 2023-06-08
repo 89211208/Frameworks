@@ -26,6 +26,15 @@ dataPool.oneNovica=(id)=>{
     })
 }
 
+dataPool.noOfNovice=()=>{
+  return new Promise ((resolve, reject)=>{
+    conn.query(`SELECT COUNT(id_stavbe) AS stavbe_count FROM Stavba;`, (err,res)=>{
+      if(err){return reject(err)}
+      return resolve(res)
+    })
+  })
+}
+
 dataPool.createNovica=(id_organizacije, id_stavbe, vrsta_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje)=>{
     return new Promise ((resolve, reject)=>{
       conn.query(`INSERT INTO Stavba (id_organizacije, id_stavbe, vrsta_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje) VALUES (?,?,?,?,?,?,?)`, [id_organizacije, id_stavbe, vrsta_stavbe, st_nadstropij, st_vhodov, katastrska_st, leto_izgradnje], (err,res)=>{
