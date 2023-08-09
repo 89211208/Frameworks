@@ -31,7 +31,7 @@ class UserView extends Component {
           <h5 className="card-title">Welcome {user && user.username}!</h5>
           <hr></hr>
           <p className="card-text">Username: {user && user.username}</p>
-          <p className="card-text">Email: {user && user.email}</p>
+          <p className="card-text">Email: {user && user.email} {user && user.username}@gmail.com</p>
           <p className="card-text">Total properties: {stavbeCount}</p>
         </div>
       </div>
