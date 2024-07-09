@@ -107,10 +107,10 @@ class AddNovicaView extends Component {
         </div>*/}
         <div style={{ display: "flex", justifyContent: "center", margin: "10px -5px" }}>
           <button onClick={() => this.QPostNovica()} className="btn btn-primary bt" style={{ margin: "0 15px", width: "100%" }}>
-            Submit
+            Add property
           </button>
           <button onClick={() => this.QSetViewInParent({ page: "novice" })} className="btn btn-primary bt" style={{ margin: "0 15px", width: "100%" }}>
-            Back
+            Cancel
           </button>
         </div>
       </div>

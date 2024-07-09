@@ -36,7 +36,7 @@ class SingleNovicaView extends Component {
             <p className="card-text">Leto izgradnje: {novica[0].leto_izgradnje}</p>
             <p className="card-text">Število nadstropij: {novica[0].st_nadstropij}</p>
             <p className="card-text">Število vhodov: {novica[0].st_vhodov}</p>
-            <button onClick={()=>this.QSetViewInParent({page:"novice"})}  className="btn btn-primary">Return news</button>
+            <button onClick={()=>this.QSetViewInParent({page:"novice"})}  className="btn btn-primary">Back</button>
           </div>
         </div>
         : "Loading..."}

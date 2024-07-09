@@ -45,7 +45,7 @@ class NoviceView extends Component {
                       style={{ margin: "10px" }}
                       className="btn btn-primary bt"
                     >
-                      Read more
+                      Details
                     </button>
                   </div>
                 </div>

@@ -1,0 +1,56 @@
+body {
+    background-color: #EBF2FA;
+}
+.btn {
+    background-color: #92AD94;
+    border: black;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #5e725f;
+}
+
+.btn:active {
+    background-color: #5e725f !important;
+}
+
+h3 {
+    color: white !important;
+}
+
+h5 {
+    color: white !important;
+}
+
+.navbar {
+    border-radius: 0px 0px 5px 5px;
+}
+
+.navbar, .card {
+    background-color: #12159e !important;
+}
+
+.container {
+    max-width: none;
+}
+
+.card {
+    box-shadow: 0px 2px 3px rgb(56, 56, 56);
+}
+
+.card-body, label, #emailHelp {
+    color: white;
+}
+
+.card-title {
+    font-size: 30px;
+}
+
+/* 
+COLORS
+#51527B
+#EBF2FA
+#418B80
+#346F67
+*/
